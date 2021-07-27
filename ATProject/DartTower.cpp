@@ -57,13 +57,13 @@ void DartTower::TargetBallon(Data* data)
 		num = count(obj->GetObjList().begin(), obj->GetObjList().end(), numTowers);
 		if (loon->GetCurrentHP() <= 0 && hadDestroyed == false)
 		{
-			data->points += 1;
+			data->points += 2;
 			//data->points -= 10 * num;
 			hadDestroyed = false;
 			return;
 		}
 
-		data->points -= 10 * num;
+		//data->points -= 10 * num;
 
 	}
 	if (closestTarget == 0)
