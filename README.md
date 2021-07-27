@@ -12,3 +12,5 @@ There should be a Zip file in main directory with a built EXE
 ## TROUBLESHOOT
 If when you try to open the exe and it opens and instantly closes.
 Look in folder for any .CSO files and copy and paste them into the release folder then try again.
+
+If Doesnt work there is a release build on the repo page located to the right ----->
