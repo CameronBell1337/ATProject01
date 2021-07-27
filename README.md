@@ -9,6 +9,6 @@ Arrow keys: Tower selection.
 
 There should be a Zip file in main directory with a built EXE
 
-#TROUBLESHOOT
+## TROUBLESHOOT
 If when you try to open the exe and it opens and instantly closes.
 Look in folder for any .CSO files and copy and paste them into the release folder then try again.
