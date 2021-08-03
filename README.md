@@ -7,7 +7,7 @@ F: To place a tower
 E: to stop and start balloon spawner
 Arrow keys: Tower selection.
 
-There should be a Zip file in main directory with a built EXE
+There should be a Zip file in main directory with a built EXE.
 
 ## TROUBLESHOOT
 If when you try to open the exe and it opens and instantly closes.
