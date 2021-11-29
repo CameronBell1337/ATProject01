@@ -24,6 +24,10 @@ public:
 
 	float currentTime = 0;
 
+	float towerPrice;
+
+	float reward;
+
 private:
 	Box box;
 	DirectX::XMFLOAT3 towerColour = { 1.0f,0.0f,0.0f };

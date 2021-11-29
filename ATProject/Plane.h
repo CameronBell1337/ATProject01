@@ -9,8 +9,8 @@ public:
 	template<class V>
 	static IndexTriList<V> MakeTesselated(int divX, int divY)
 	{
-		constexpr float w = 2.0f;
-		constexpr float h = 2.0f;
+		constexpr float w = 1.0f;
+		constexpr float h = 1.0f;
 		const int numVertX = divX + 1;
 		const int numVertY = divY + 1;
 		std::vector<V> vertices(numVertX * numVertY);

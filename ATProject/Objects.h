@@ -9,7 +9,7 @@ class Objects
 {
 public:
 	Objects() = default;
-	~Objects();
+	virtual ~Objects();
 
 	Objects(const Objects&) = delete;
 	Objects& operator=(const Objects&) = delete;
@@ -25,6 +25,8 @@ public:
 	static void DestroyObj(Objects* obj);
 	static void CreateObj(Objects* obj);
 
+	
+
 	static std::vector<Objects*>& GetObjDstryList()
 	{
 		return objToDestroy;
@@ -35,7 +37,7 @@ public:
 		return createObjList;
 	};
 
-	Draw* m;
+	Draw* m = nullptr;
 
 private:
 

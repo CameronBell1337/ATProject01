@@ -11,8 +11,10 @@ void Objects::DrawObj(Graphics* graphics)
 
 Objects::~Objects()
 {
-	delete m;
+	
+	delete[] m;
 	m = nullptr;
+	
 }
 
 void Objects::SetPos(Vector3 _pos)

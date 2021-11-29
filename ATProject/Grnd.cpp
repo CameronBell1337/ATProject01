@@ -2,7 +2,7 @@
 #include "Includes.h"
 #include "Plane.h"
 #include "Objects.h"
-Grnd::Grnd(Graphics& graphics, DirectX::XMFLOAT3 colour)
+Grnd::Grnd(Graphics& graphics, DirectX::XMFLOAT3 colour, int id)
 {
 	if (!isStaticInit())
 	{
@@ -36,7 +36,10 @@ Grnd::Grnd(Graphics& graphics, DirectX::XMFLOAT3 colour)
 		SetStaticIndex();
 	}
 
-	
+	if (id > 0)
+	{
+		typeID = id;
+	}
 
 	struct PSConst
 	{
@@ -70,6 +73,13 @@ TowerBase* Grnd::GetTowerOnTile()
 {
 	return occupyingTower;
 }
+
+int Grnd::GetType()
+{
+	return typeID;
+}
+
+
 
 void Grnd::PlaceTowerOnTile(TowerBase* tower)
 {

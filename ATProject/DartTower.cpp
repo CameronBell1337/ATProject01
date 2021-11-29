@@ -17,8 +17,11 @@ DartTower::DartTower(Graphics& graphics, Vector3 coords) : TowerBase(graphics, c
 	SetPos(coords);
 
 	attackDamage = 15.0f;
-	maxDelay = 2.5f;
-	targetRange = 3.0f;
+	maxDelay = 1.0f;
+	targetRange = 5.0f;
+	towerPrice = 100.0f;
+
+	reward = 50.0f;
 
 }
 
@@ -57,7 +60,7 @@ void DartTower::TargetBallon(Data* data)
 		num = count(obj->GetObjList().begin(), obj->GetObjList().end(), numTowers);
 		if (loon->GetCurrentHP() <= 0 && hadDestroyed == false)
 		{
-			data->points += 2;
+			//data->points += 5;
 			//data->points -= 10 * num;
 			hadDestroyed = false;
 			return;

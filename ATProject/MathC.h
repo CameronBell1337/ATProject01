@@ -3,6 +3,8 @@
 
 
 constexpr float _pi = 3.14159265358979f;
+constexpr double PI_D = 3.1415926535897932;
+
 
 /// <summary>
 /// Multiplies x by x
@@ -27,6 +29,16 @@ constexpr T lerp(const T& a, const T& b, float t)
 {
 	//https://lunarlabs.pt/blog/post/the_art_of_lerp
 	return a + (b - a) * t;
+}
+
+
+template<typename T>
+T wrap_angle(T theta)
+{
+	const T modded = fmod(theta, (T)2.0 * (T)PI_D);
+	return (modded > (T)PI_D) ?
+		(modded - (T)2.0 * (T)PI_D) :
+		modded;
 }
 
 /// <summary>

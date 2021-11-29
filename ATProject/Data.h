@@ -8,6 +8,7 @@ struct Data
 	std::vector<class Objects*>* objs;
 	float dT;
 	float points;
+	float currentMulti;
 
 	bool isDestroyed;
 	

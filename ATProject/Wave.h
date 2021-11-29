@@ -8,6 +8,7 @@ class Wave : public Objects
 public:
 	Wave(Waypoint* initWP);
 	void Update(Data* data) override;
+	
 
 	void Timer();
 	void Spawn(Data* data);

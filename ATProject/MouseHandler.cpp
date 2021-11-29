@@ -16,6 +16,18 @@ int Mouse::GetYPos() const noexcept
 	return y_pos;
 }
 
+Mouse::RawDelta Mouse::ReadRawDelta() noexcept
+{
+	if (rawDeltaBuffer.size() > 0u)
+	{
+		const RawDelta d = rawDeltaBuffer.front();
+		rawDeltaBuffer.pop();
+		return d;
+	}
+	return Mouse::RawDelta();
+}
+
+
 Mouse::Input Mouse::GetMouseInput() noexcept
 {
 	if (mBuffer.size() > 0u)

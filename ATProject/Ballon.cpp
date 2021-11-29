@@ -77,7 +77,7 @@ void Ballon::TakeDamage(Data* data, float dmgAmount)
 
 	if (currentHP <= 0)
 	{
-		
+		data->currentMulti = 5.0f;
 		Objects::DestroyObj(this);
 		
 	}

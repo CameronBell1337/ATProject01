@@ -11,6 +11,7 @@
 #include "GrndSelector.h"
 #include "Map.h"
 #include "Objects.h"
+#include "Ballon.h"
 
 
 App::App() : window(1280, 720, "A GAME!")
@@ -56,8 +57,6 @@ App::App() : window(1280, 720, "A GAME!")
 	Init _i(window.Gfx());
 	drawables.reserve(drawAmount);
 	std::generate_n(std::back_inserter(drawables), drawAmount, _i);*/
-
-	
 	//setting camera and projection Matrix
 	window.Gfx().SetProjectionM(
 		DirectX::XMMatrixPerspectiveLH(1.0f, 9.0f / 16.0f, 0.5f, 400.0f));
@@ -73,17 +72,10 @@ App::App() : window(1280, 720, "A GAME!")
 	data.map = map;
 	data.points = startingPoints;
 	data.isDestroyed = false;
-	
+	data.currentMulti = 1.0f;
 
 	Objects* init = new GrndSelector(window.Gfx());
 	objs.emplace_back(init);
-
-
-	//grnd.SetPos(Vector3(0.0f, 0.0f, 0.0f));
-	
-	
-
-
 
 }
 
@@ -95,7 +87,7 @@ App::~App()
 		if (gObjs)
 		{
 			//TODO Fix heap error exception
-			delete gObjs;
+			delete[] gObjs;
 			gObjs = nullptr;
 		}
 	}
@@ -146,9 +138,7 @@ void App::Update()
 	}
 
 
-	std::ostringstream oss;
-	oss << "(" << data.points << ")\n";
-	OutputDebugString(oss.str().c_str());
+	
 
 	// #### Mouse Input #### ///
 	if (m_input.GetEventType() == Mouse::Input::EventType::m_wheel_up)
@@ -209,18 +199,31 @@ void App::Update()
 	
 	// #### Keyboard Input #### ///
 
+	const auto delta = window.mouse.ReadRawDelta();
+	mainCam.Rotate(delta.x, delta.y);
+
 	std::vector<Objects*>& dList = Objects::GetObjDstryList();
 	while (dList.size())
 	{
 		Objects* ptr = dList.back();
+		
 		dList.pop_back();
 
 		for (std::vector<Objects*>::iterator it = objs.begin(); it != objs.end(); it++)
 		{
+		
 			if ((*it) == ptr)
 			{
 				delete (*it);
 				(*it) = nullptr;
+
+				
+				if (data.currentMulti != 1.0f)
+				{
+					data.points += (10.0f * data.currentMulti);
+					data.currentMulti = 1.0f;
+				}
+				
 				objs.erase(it);
 				break;
 			}

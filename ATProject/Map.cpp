@@ -40,17 +40,17 @@ Map::Map(Graphics& graphics)
 	};
 
 	grnd.reserve(mapW);
-	for (auto x = 0; x < mapW; x++)
+	for (int x = 0; x < mapW; x++)
 	{
 		grnd.emplace_back();
 		grnd.back().reserve(mapH);
-		for (auto y = 0; y < mapH; y++)
+		for (int y = 0; y < mapH; y++)
 		{
 			if (gridDims[x + y * mapW] == 0)
 			{
 				mainColours = colours0;
 			}
-			else if (gridDims[x + y *mapW] == 1)
+			else if (gridDims[x + y * mapW] == 1)
 			{
 				mainColours = colours1;
 			}
@@ -63,7 +63,7 @@ Map::Map(Graphics& graphics)
 				mainColours = colours3;
 			}
 
-			grnd.back().emplace_back(graphics, mainColours);;
+			grnd.back().emplace_back(graphics, mainColours, gridDims[x + y * mapW]);;
 			Vector3 coords;
 
 			coords.x = x;

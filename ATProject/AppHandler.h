@@ -6,6 +6,7 @@
 #include "Data.h"
 #include "Grnd.h"
 #include "Waypoint.h"
+#include "Ballon.h"
 
 class App
 {
@@ -19,7 +20,6 @@ private:
 
 	void Update();
 
-	int boxAmount = 1;
 	WindowHandler window;
 	Timer timer;
 
@@ -27,7 +27,8 @@ private:
 	Data data;
 	Map* map;
 
-	std::vector<std::unique_ptr<class Box>> B;
+	Ballon* loon;
+
 	std::vector<std::unique_ptr<class Draw>> drawables;
 	std::vector<Waypoint> wps;
 

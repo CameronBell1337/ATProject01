@@ -8,10 +8,17 @@ class Mouse
 	friend class WindowHandler;
 
 public:
+
+	struct RawDelta
+	{
+		int x, y;
+	};
+
 	class Input
 	{
 
 	public:
+		
 		enum class EventType
 		{
 			l_b_pressed,
@@ -109,6 +116,7 @@ public:
 	bool RightMButtonPressed() const noexcept;
 	bool IsMWheelDown() const noexcept;
 	bool IsMWheelUp() const noexcept;
+    RawDelta ReadRawDelta() noexcept;
 
 	bool IsMouseQEmpty() const noexcept
 	{
@@ -166,4 +174,5 @@ private:
 
 	std::queue<Input> mBuffer;
 	//std::queue<RawInput> rawInputBuffer;
+	std::queue<RawDelta> rawDeltaBuffer;
 };

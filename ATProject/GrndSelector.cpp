@@ -67,16 +67,21 @@ void GrndSelector::Update(Data* data)
 		{
 			Grnd* t = data->map->GetGrnd(GetPos());
 
+
 			if (data->points > 0)
 			{
 				if (t->GetTowerOnTile() == nullptr)
 				{
-					//TODO Allow realtime colour changes
-					data->map->SetColour(colours0);
-					auto spwanTurret = new DartTower(*data->graphics, GetPos());
-					Objects::CreateObj(spwanTurret);
-					t->PlaceTowerOnTile(spwanTurret);
-					data->points -= towerCost;
+					if (t->GetType() != 1 && t->GetType() != 2)
+					{
+						//TODO Allow realtime colour changes
+						data->map->SetColour(colours0);
+						auto spwanTurret = new DartTower(*data->graphics, GetPos());
+						Objects::CreateObj(spwanTurret);
+						t->PlaceTowerOnTile(spwanTurret);
+
+						data->points -= spwanTurret->towerPrice;
+					}
 
 				}
 			}
